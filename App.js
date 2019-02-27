@@ -7,15 +7,30 @@ import {
  } from 'react-navigation';
 import { Icon } from 'react-native-elements'
 import { Provider } from 'react-redux';
-// import { createStore, applyMiddleware } from 'redux';
-// import ReduxThunk from 'redux-thunk';
+import { Notifications } from 'expo';
 
 import { AuthScreen, WelcomeScreen, MapScreen, DeckScreen, ReviewScreen, SettingScreen } from './screens';
 import reducers from './reducers';
-import store from './store'
-// import WelcomeScreen from './screens/WelcomeScreen'
+import store from './store';
+import registerForNotifications from './services/push_notification';
 
 export default class App extends React.Component {
+  componentDidMount() {
+      registerForNotifications();
+
+      Notifications.addListener((notification) => {
+        const { data: { text }, origin } = notification
+
+        if (origin === "received" && text) {
+          Alert.alert(
+            'New Push Notification',
+            text,
+            [{ text: 'OK'}]
+          );
+        }
+      });
+  }
+
   render() {
     const MainNavigator = createAppContainer(createBottomTabNavigator({
         welcome: {
@@ -57,7 +72,6 @@ export default class App extends React.Component {
         }
     }));
 
-    // const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
       <Provider store={store}>
         <MainNavigator />
