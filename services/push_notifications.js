@@ -1,4 +1,4 @@
-import { Permission, Notifications } from 'expo';
+import { Permissions, Notifications } from 'expo';
 import { AsyncStorage } from 'react-native';
 import axios from 'axios';
 
@@ -6,7 +6,7 @@ const URL = 'http://rallycoding.herokuapp.com/api/tokens';
 
 export default async () => {
   let previousToken = await AsyncStorage.getItem('pushToken');
-
+  console.log(previousToken);
   if (previousToken) {
     return;
   } else {

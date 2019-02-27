@@ -83,7 +83,6 @@ const styles = {
 };
 
 mapStateToProps = ({ likedJobs }) => {
-  console.log(likedJobs)
   return { likedJobs: likedJobs };
 }
 

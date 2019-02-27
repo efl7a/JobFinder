@@ -1,5 +1,6 @@
 import { AsyncStorage } from 'react-native';
 import * as Expo from 'expo';
+import { EXPO_KEY } from 'react-native-dotenv';
 
 import {
   FACEBOOK_LOGIN_SUCCESS,
@@ -20,7 +21,7 @@ export const facebookLogin = () => async dispatch => {
 
 const doFacebookLogin = async dispatch => {
   try {
-    let { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('', {
+    let { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(EXPO_KEY, {
         permissions: ['public_profile']
       });
     if (type === 'cancel') {

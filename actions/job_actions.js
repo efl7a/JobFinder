@@ -1,6 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import Config from 'react-native-config';
+import { GOOGLE_MAPS_API_KEY } from 'react-native-dotenv'
 
 import {
   FETCH_JOBS,
@@ -14,7 +15,7 @@ const JOB_QUERY_PARAMS = {
 };
 const GOOGLE_URL = `https://maps.googleapis.com/maps/api/geocode/json?`
 const GOOGLE_QUERY_PARAMS = {
-  key: ''
+  key: GOOGLE_MAPS_API_KEY
 };
 
 let COUNT = 0;

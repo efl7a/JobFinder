@@ -12,7 +12,7 @@ import { Notifications } from 'expo';
 import { AuthScreen, WelcomeScreen, MapScreen, DeckScreen, ReviewScreen, SettingScreen } from './screens';
 import reducers from './reducers';
 import store from './store';
-import registerForNotifications from './services/push_notification';
+import registerForNotifications from './services/push_notifications';
 
 export default class App extends React.Component {
   componentDidMount() {
